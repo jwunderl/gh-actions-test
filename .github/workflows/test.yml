@@ -1,0 +1,19 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Run a one-line script
+      run: echo Hello, world!
+    - name: echo
+      run: echo ${{ github.ref }}
+    - name: test
+      if: github.ref == stable[0-9]+
+      run: echo well
+      
