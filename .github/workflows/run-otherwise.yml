@@ -3,8 +3,8 @@ name: CI
 on:
   push:
     # run on semantic releases
-    tags:
-      - '!v[0-9]+.[0-9]+.[0-9]+'
+    tags-ignore:
+      - v[0-9]+.[0-9]+.[0-9]+
 
 jobs:
   build:
@@ -20,8 +20,11 @@ jobs:
     - name: test
       if: startsWith(github.ref, 'refs/heads/stable')
       run: echo gottem
-  test:
+  test-job-if:
     runs-on: ubuntu-latest
 
     if: startsWith(github.ref, 'refs/heads/stable')
 
+    steps:
+    - name: echo
+      run: echo I ran
