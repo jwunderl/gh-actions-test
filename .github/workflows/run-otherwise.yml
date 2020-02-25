@@ -2,6 +2,8 @@ name: otherwise
 
 on:
   push:
+    branches:
+      - '**'
     # run on semantic releases
     tags-ignore:
       - v[0-9]+.[0-9]+.[0-9]+
