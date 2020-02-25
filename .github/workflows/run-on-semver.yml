@@ -1,7 +1,10 @@
 name: CI
 
-on: [push]
-
+on:
+  push:
+    # run on semantic releases
+    tags:
+      - v[0-9]+.[0-9]+.[0-9]+
 jobs:
   build:
 
@@ -16,4 +19,4 @@ jobs:
     - name: test
       if: github.ref == 'refs/heads/stable[0-9]+'
       run: echo gottem
-      
+
