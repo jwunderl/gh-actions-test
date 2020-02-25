@@ -17,6 +17,14 @@ jobs:
     - name: echo
       run: echo ${{ github.ref }}
     - name: test
-      if: github.ref == 'refs/heads/stable[0-9]+'
+      if: startsWith(github.ref, 'refs/heads/stable')
       run: echo gottem
 
+  test-job-if:
+    runs-on: ubuntu-latest
+
+    if: startsWith(github.ref, 'refs/heads/stable')
+
+    steps:
+    - name: echo
+      run: echo I ran
